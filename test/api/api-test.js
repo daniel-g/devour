@@ -602,15 +602,16 @@ describe('JsonApi', () => {
     it('should expose a method for arbitrary HTTP calls', () => {
       const url = 'https://example.com'
       const method = 'PATCH'
+      const model = 'modelName'
       const params = { id: 3 }
       const data = { body: 'something different' }
 
       jsonApi.runMiddleware = sinon.spy()
 
-      jsonApi.request(url, method, params, data)
+      jsonApi.request(url, method, model, params, data)
 
       expect(jsonApi.runMiddleware.called).to.be.truthy
-      expect(jsonApi.runMiddleware.calledWith(url, method, params, data)).to.be.truthy
+      expect(jsonApi.runMiddleware.calledWith(url, method, model, params, data)).to.be.truthy
     })
 
     it('should handle null primary data', (done) => {

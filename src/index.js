@@ -293,8 +293,8 @@ class JsonApi {
       })
   }
 
-  request (url, method = 'GET', params = {}, data = {}) {
-    let req = { url, method, params, data }
+  request (url, method = 'GET', model, params = {}, data = {}) {
+    let req = { url, method, model, params, data }
     return this.runMiddleware(req)
   }
 
